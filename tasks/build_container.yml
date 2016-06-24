@@ -5,11 +5,11 @@
        version={{ repo_version }}
        dest={{ tmp_dest }}
        accept_hostkey=yes
-       key_file={{ rsa_key }}
   register: docker_downloaded
 
 - name: DOCKER | build the image
   command: docker build -t "built-by-ansible:gocd-agent-pi-erlang" {{ tmp_dest }}
+  when: docker_downloaded.changed
 
 - name: DOCKER | run the site in a docker container
   docker:
@@ -18,3 +18,4 @@
     state: reloaded
     publish_all_ports: yes
     use_tls: encrypt
+    when: docker_downloaded.changed
