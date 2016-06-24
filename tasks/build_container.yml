@@ -17,4 +17,4 @@
           state=reloaded
           publish_all_ports=yes
           use_tls=encrypt
-    when: docker_downloaded.changed
+  when: docker_downloaded.changed
