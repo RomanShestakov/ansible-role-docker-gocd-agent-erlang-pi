@@ -6,7 +6,7 @@
        dest={{ tmp_dest }}
        accept_hostkey=yes
        key_file={{ rsa_key }}
-  register: magma_downloaded
+  register: docker_downloaded
 
 - name: DOCKER | build the image
   command: docker build -t "built-by-ansible:gocd-agent-pi-erlang" {{ tmp_dest }}
