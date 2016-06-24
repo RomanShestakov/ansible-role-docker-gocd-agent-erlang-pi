@@ -1,0 +1,25 @@
+# file: tasks/main.yml
+
+# - name: Docker | Download source
+#   git: repo={{ repo_url }}
+#        version={{ repo_version }}
+#        dest={{ tmp_dest }}
+#        accept_hostkey=yes
+#   register: docker_file_downloaded
+
+# - name: Docker | Build the image
+#   command: docker build -t docker-agent .
+#            chdir=/tmp/docker-gocd-agent-pi
+#   when: docker_file_downloaded
+
+# # docker stop $(docker ps -q --filter ancestor=<image-name> )
+# - name: Docker | Stop the image
+#   command: docker stop gocd-agent-erlang
+#   when: docker_file_downloaded
+
+# - name: Docker | Start the image
+#   command: docker run -d -name gocd-agent-erlang docker-agent:latest
+#   when: docker_file_downloaded
+
+#- include: 'install_docker_py.yml'
+- include: 'build_container.yml'

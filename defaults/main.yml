@@ -1,0 +1,4 @@
+repo_name: docker-gocd-agent-pi
+repo_url: https://github.com/RomanShestakov/{{ docker-gocd-agent-pi }}.git
+repo_version: master
+tmp_dest: /tmp/{{ docker-gocd-agent-pi }}

@@ -1,0 +1,18 @@
+# meta/main.yml
+
+galaxy_info:
+  author: Roman Shestakov
+  description: a role for raspberry pi base gocd agents with erlang
+  min_ansible_version: 1.4
+  license: MIT
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  categories:
+  - system
+
+dependencies:
+  - {role: geerlingguy.git, tags: git }
+  - {role: nicholsn.miniconda, tags: conda }
+  - {role: RomanShestakov.ansible-role-hypriot-docker, tags: hypriot-docker}
