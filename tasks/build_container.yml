@@ -1,6 +1,6 @@
 # file: tasks/build_container.yml
 
-- name: DOCKER | checkout projects from github into /tmp/docker-gocd-agent-pi
+- name: DOCKER | checkout projects from github into "/tmp/docker-gocd-agent-pi"
   git: repo={{ repo_url }}
        version={{ repo_version }}
        dest={{ tmp_dest }}
