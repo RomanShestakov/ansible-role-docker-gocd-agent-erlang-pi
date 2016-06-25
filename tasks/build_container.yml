@@ -17,10 +17,10 @@
        version=1.1.0
        state=present
 
-# - name: install requests
-#   pip: name=requests
-#        version=2.6.0
-#        state=present
+- name: install requests
+  pip: name=requests
+       version=2.6.0
+       state=present
 
 - name: DOCKER | checkout projects from github
   git: repo={{ repo_url }}
