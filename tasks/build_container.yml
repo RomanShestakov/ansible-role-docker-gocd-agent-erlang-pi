@@ -1,35 +1,5 @@
 # file: tasks/build_container.yml
 
-# - name: remove apt packages
-#   apt: name='{{ item }}' state=absent update_cache=yes
-#   with_items:
-#     #- git
-#     - python-pip
-#     # - python-dev
-#     # - python-setuptools
-
-- name: install apt packages
-  apt: name='{{ item }}' state=present update_cache=yes
-  with_items:
-    - git
-    #- python-pip
-    - python-dev
-    - python-setuptools
-
-- name: Install pip
-  easy_install:
-      name=pip
-
-- name: install docker-py
-  pip: name=docker-py
-       version=1.8.1
-       state=present
-
-- name: install requests
-  pip: name=requests
-       version=2.6.0
-       state=present
-
 - name: DOCKER | checkout projects from github
   git: repo={{ repo_url }}
        version={{ repo_version }}
@@ -40,14 +10,4 @@
 - name: DOCKER | build the image
   become: yes
   command: docker build -t "built-by-ansible:gocd-agent-pi-erlang" {{ tmp_dest }}
-  when: docker_downloaded.changed
-
-- name: DOCKER | run the site in a docker container
-  become: yes
-  # become_user: pi
-  docker: name=gocd-agent
-          image="built-by-ansible:gocd-agent-pi-erlang"
-          state=reloaded
-          publish_all_ports=yes
-          use_tls=encrypt
   when: docker_downloaded.changed
