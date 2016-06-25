@@ -12,6 +12,8 @@
   when: docker_downloaded.changed
 
 - name: DOCKER | run the site in a docker container
+  become: yes
+  become_user: pi
   docker: name=gocd-agent
           image="built-by-ansible:gocd-agent-pi-erlang"
           state=reloaded
