@@ -1,12 +1,12 @@
 # file: tasks/build_container.yml
 
-- name: remove apt packages
-  apt: name='{{ item }}' state=absent update_cache=yes
-  with_items:
-    #- git
-    - python-pip
-    # - python-dev
-    # - python-setuptools
+# - name: remove apt packages
+#   apt: name='{{ item }}' state=absent update_cache=yes
+#   with_items:
+#     #- git
+#     - python-pip
+#     # - python-dev
+#     # - python-setuptools
 
 - name: install apt packages
   apt: name='{{ item }}' state=present update_cache=yes
