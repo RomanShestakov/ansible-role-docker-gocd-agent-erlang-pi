@@ -1,20 +1,20 @@
 # tasks/run_container.yml
 
-# - name: DOCKER | run the site in a docker container
-#   become: yes
-#   docker_container:
-#     name:gocd-agent
-#     image:"built-by-ansible:gocd-agent-pi-erlang"
-#     state:started
-#     restart:yes
-#   #when: docker_downloaded.changed
-
 - name: DOCKER | run the site in a docker container
-  #become_user: pi
   become: yes
-  docker: name=gocd-agent
-          image="built-by-ansible:gocd-agent-pi-erlang"
-          state=restarted
-          publish_all_ports=yes
-          use_tls=encrypt
+  docker_container:
+    name:gocd-agent
+    image:"built-by-ansible:gocd-agent-pi-erlang"
+    state:started
+    restart:yes
+  #when: docker_downloaded.changed
+
+# - name: DOCKER | run the site in a docker container
+#   #become_user: pi
+#   become: yes
+#   docker: name=gocd-agent
+#           image="built-by-ansible:gocd-agent-pi-erlang"
+#           state=restarted
+#           publish_all_ports=yes
+#           use_tls=encrypt
   #when: docker_downloaded.changed
