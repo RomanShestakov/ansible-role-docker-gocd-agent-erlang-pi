@@ -14,7 +14,8 @@
   become: yes
   docker: name=gocd-agent
           image="built-by-ansible:gocd-agent-pi-erlang"
-          state=reloaded
+          state=started
+          restart=yes
           publish_all_ports=yes
           use_tls=encrypt
-  when: docker_downloaded.changed
+  #when: docker_downloaded.changed
