@@ -1,13 +1,23 @@
 # file: tasks/build_container.yml
 
-- name: DOCKER | checkout projects from github
-  git: repo={{ repo_url }}
-       version={{ repo_version }}
-       dest={{ tmp_dest }}
-       accept_hostkey=yes
-  register: docker_downloaded
+- name: DOCKER | make /tmp/
+  file: path={{ tmp_dest }}
+        state=directory
+        owner={{ ansible_ssh_user }}
+        mode=0755
+
+- name: DOCKER | Create Dockerfile
+  action: template
+          src=Dockerfile-template.j2
+          dest={{ tmp_dest }}/Dockerfile
+          mode=0755
+
+- name: DOCKER | Create docker-entrypoint.sh
+  action: template
+          src=docker-entrypoint.sh-template.j2
+          dest={{ tmp_dest }}/docker-entrypoint.sh
+          mode=0755
 
 - name: DOCKER | build the image
   become: yes
   command: docker build -t "built-by-ansible:gocd-agent-pi-erlang" {{ tmp_dest }}
-  when: docker_downloaded.changed

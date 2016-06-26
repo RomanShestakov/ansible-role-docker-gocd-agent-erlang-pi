@@ -13,6 +13,4 @@ galaxy_info:
   - system
 
 dependencies:
-  - {role: geerlingguy.git, tags: git }
-  - {role: nicholsn.miniconda, tags: conda }
   - {role: RomanShestakov.ansible-role-hypriot-docker, tags: hypriot-docker}
