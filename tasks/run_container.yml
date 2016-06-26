@@ -4,9 +4,9 @@
 - name: DOCKER | run the site in a docker container
   become: yes
   docker_container:
-    name:gocd-agent
-    image:"built-by-ansible:gocd-agent-pi-erlang"
-    state:started
-    restart:yes
-    network_mode:host
-  when: dockerfile.changed
+    name: gocd-agent
+    image: "built-by-ansible:gocd-agent-pi-erlang"
+    state: started
+    restart: yes
+    network_mode: host
+  #when: dockerfile.changed
