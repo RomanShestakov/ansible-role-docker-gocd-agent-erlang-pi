@@ -18,9 +18,9 @@
           src=docker-entrypoint.sh-template.j2
           dest={{ tmp_dest }}/docker-entrypoint.sh
           mode=0755
-  register: dockerfile.changed
+  when: dockerfile.changed
 
 - name: DOCKER | build the image
   become: yes
   command: docker build -t "built-by-ansible:gocd-agent-pi-erlang" {{ tmp_dest }}
-  register: dockerfile.changed
+  when: dockerfile.changed
