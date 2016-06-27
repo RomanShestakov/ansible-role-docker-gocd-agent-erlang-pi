@@ -8,5 +8,5 @@
     image: "built-by-ansible:gocd-agent-pi-erlang"
     state: started
     restart: yes
-    network_mode: host
+    #network_mode: host
   #when: dockerfile.changed
