@@ -4,3 +4,4 @@
 
 tmp_dest: "/tmp/docker-gocd-agent-pi"
 erlang_version: "17.5"
+erlang_repo_url: "http://erlang.org/download/otp_src_${erlang_version}.tar.gz"
