@@ -1,0 +1,14 @@
+[Unit]
+Description=GOCD Agent Docker Container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill gocd-agent
+ExecStartPre=-/usr/bin/docker rm gocd-agent
+#ExecStartPre=/usr/bin/docker pull gocd-agent
+ExecStart=/usr/bin/docker run --name gocd-agent
+
+[Install]
+WantedBy=multi-user.target

@@ -10,9 +10,9 @@
 #           use_tls=encrypt
 #   #when: docker_downloaded.changed
 
-- name: DOCKER | make sure docker is started (and runs on boot)
-  become: yes
-  service: name=docker state=started enabled=yes
+# - name: DOCKER | make sure docker is started (and runs on boot)
+#   become: yes
+#   service: name=docker state=started enabled=yes
   #when: hypriot_image_downloaded.changed
 
 # requires ansible 2.1.0.0
@@ -26,3 +26,9 @@
     restart_policy: always
     #network_mode: host
   #when: dockerfile.changed
+
+- name: DOCKER | Create gocd-agent service
+     template: src=templates/gocd-agent.service-template.j2 dest=/etc/systemd/system/gocd-agent.service
+
+- name: DOCKER | run the container
+     service: name=gocd-agent state=started enabled=yes
