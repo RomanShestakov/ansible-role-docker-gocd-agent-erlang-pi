@@ -10,6 +10,11 @@
 #           use_tls=encrypt
 #   #when: docker_downloaded.changed
 
+- name: DOCKER | make sure docker is started (and runs on boot)
+  become: yes
+  service: name=docker state=started enabled=yes
+  #when: hypriot_image_downloaded.changed
+
 # requires ansible 2.1.0.0
 - name: DOCKER | run the site in a docker container
   become: yes
