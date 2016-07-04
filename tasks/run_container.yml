@@ -28,7 +28,10 @@
   #when: dockerfile.changed
 
 - name: DOCKER | Create gocd agent service
-     template: src=templates/gocd-agent.service-template.j2 dest=/etc/systemd/system/gocd-agent.service
+  sudo: true
+  action: template src=gocd-agent.service-template.j2
+          dest=/etc/systemd/system/gocd-agent.service
 
 - name: DOCKER | run the container
-     service: name=gocd-agent state=started enabled=yes
+  sudo: true
+  service: name=gocd-agent state=started enabled=yes
